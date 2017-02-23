@@ -123,11 +123,23 @@ of the application to report this information.
 
 ===================== */
 
-var dataset = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson"
+var dataset = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson";
 var featureGroup;
 
 var myStyle = function(feature) {
-  return {};
+  console.log(feature);
+    if (feature.properties.COLLDAY == "FRI") {
+      return {fillColor: 'red'}}
+      else if (feature.properties.COLLDAY == "MON") {
+          return {fillColor: 'blue'}}
+      else if (feature.properties.COLLDAY == "TUE") {
+          return {fillColor: 'green'}}
+      else if (feature.properties.COLLDAY == "WED") {
+          return {fillColor: 'yellow'}}
+      else if (feature.properties.COLLDAY == "THU") {
+          return {fillColor: 'purple'}}
+      else if (feature.properties.COLLDAY == "SAT") {
+          return {fillColor: 'orange'}}
 };
 
 var showResults = function() {
@@ -153,11 +165,31 @@ var eachFeatureFunction = function(layer) {
     ===================== */
     console.log(layer.feature);
     showResults();
+    var dow = layer.feature.properties.COLLDAY;
+    switch(dow) {
+      case "MON":
+        dow = "Monday";
+        break;
+      case "TUE":
+        dow = "Tuesday";
+        break;
+      case "WED":
+        dow = "Wednesday";
+        break;
+      case "THU":
+        dow = "Thursday";
+        break;
+      case "FRI":
+        dow = "Friday";
+    }
+    $('.day-of-week').html(dow);
   });
 };
 
 var myFilter = function(feature) {
-  return true;
+  if (feature.properties.COLLDAY == ' ')
+    return false;
+    else return true;
 };
 
 $(document).ready(function() {

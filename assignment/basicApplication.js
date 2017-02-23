@@ -14,7 +14,7 @@ functions that will be used in your application. To test it out, try calling the
 console. For example, try running: clickNextButton() and see what it does. Use lots of console logs!
 ================================ */
 
-var state = {
+var slides = {
   "slideNumber": 0, // slideNumber keeps track of what slide you are on. It should increase when you
                     // click the next button and decrease when you click the previous button. It
                     // should never get so large that it is bigger than the dataset. It should never
@@ -38,15 +38,23 @@ var state = {
   ]
 };
 
-var clickNextButton = function() {
+var clickNextButton = function(slides) {
+  if (slides.slideNumber > slides.slideData.length) {
+    slides.slideNumber = slides.slideNumber + 1;
+  }
+  console.log("Slide Number:" , slides.slideNumber);
+};
 
-}
+var clickPreviousButton = function(slides) {
+  if (slides.slideNumber > 1) {
+    slides.slideNumber = slides.slideNumber - 1;
+  }
+  console.log("Slide Number:", slides.slideNumber);
+};
 
-var clickPreviousButton = function() {
-
-}
-
-var saySlideName = function(slide) {
+var saySlideName = function(slides) {
+  var slideName = slides.slideNumber;
+  console.log("Slide Number:", slideName);
   // saySlideName uses console.log to "say" the name of the slide it is given. It should run when
   // someone clicks on one of the buttons.
-}
+};
