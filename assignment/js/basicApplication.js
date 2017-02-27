@@ -58,8 +58,3 @@ var saySlideName = function(slides) {
   // saySlideName uses console.log to "say" the name of the slide it is given. It should run when
   // someone clicks on one of the buttons.
 };
-
-//selector?
-$("#Hotspot_hotspot_1uv7p").click(clickNextButton())
-var myNewSlide = nextSlide();
-renderHTML(myNewSlide)
